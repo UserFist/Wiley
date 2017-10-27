@@ -1,8 +1,8 @@
 package Wiley.tests;
 
 import Wiley.pages.HomePage;
-import java.util.Arrays;
-import java.util.List;
+
+import java.util.*;
 
 public class MainTest extends BaseTest {
     private static final List<String> NAVIGATION_MENU_EXPECTED = Arrays.asList("Home", "Subjects", "About Wiley", "Contact Us", "Help");
@@ -10,7 +10,7 @@ public class MainTest extends BaseTest {
             "Conferences", "Booksellers", "Corporations", "Institutions");
     private static final String STUDENTS_LINK_EXPECTED = "http://eu.wiley.com/WileyCDA/Section/id-404702.html";
     private static final List<String> MENU_ON_THE_LEFT_EXPECTED = Arrays.asList("Authors", "Librarians", "Booksellers", "Instructors",
-            "Students","Government Employees", "Societies", "Corporate Partners");
+            "Students",/*"Government Employees",*/ "Societies", "Corporate Partners");
     private static final String ALERT_TEXT_IF_ENTRY_NOTHING_EXPECTED = "Please enter email address";
     private static final String ALERT_TEXT_IF_ENTRY_INCORRECTLY = "Invalid email address.";
     private static final String EMPTY_STRING = "";
@@ -27,7 +27,7 @@ public class MainTest extends BaseTest {
         homePage.checkNavigationMenu(NAVIGATION_MENU_EXPECTED)
                 .checkResourcesItemsTitle(MENU_ITEMS_EXPECTED)
                 .clickStudentLink()
-                .checker().checkStudentsLink(STUDENTS_LINK_EXPECTED)
+                .checkStudentsLink(STUDENTS_LINK_EXPECTED)
                 .checkStudentHeader(STUDENT_HEADER_EXPECTED)
                 .checkMenuOnTheLeft(MENU_ON_THE_LEFT_EXPECTED)
                 .studentsItemStyleAndClickable()
