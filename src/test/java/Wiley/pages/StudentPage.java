@@ -4,6 +4,7 @@ import Wiley.driver.Browser;
 import org.testng.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
 import java.util.List;
 
 public class StudentPage extends AbstractPage {
@@ -27,7 +28,7 @@ public class StudentPage extends AbstractPage {
         return this.new StudentPageCheck();
     }
 
-    public HomePage clickHome(){
+    public HomePage clickHome() {
         buttonHome.click();
         return new HomePage();
     }
@@ -47,15 +48,16 @@ public class StudentPage extends AbstractPage {
             return this;
         }
 
-        public StudentPage studentsItemStyleAndClickable(){
+        public StudentPage studentsItemStyleAndClickable() {
             Assert.assertTrue(selectedItemsMenuOnTheLeft.getAttribute("class").contains("active"));
 
-            for(int d = 0; d < unselectedItemsMenuOnTheLeft.size(); d++){
+            for (int d = 0; d < unselectedItemsMenuOnTheLeft.size(); d++) {
                 Assert.assertFalse(unselectedItemsMenuOnTheLeft.get(d).getAttribute("class").equals(selectedItemsMenuOnTheLeft.getAttribute("class")));
             }
             Assert.assertFalse(isClickable(selectedItemsMenuOnTheLeft));
             return new StudentPage();
         }
+
         public StudentPageCheck checkStudentsLink(String expectedStudentsLink) {
             try {
                 Thread.sleep(5000);
@@ -68,7 +70,7 @@ public class StudentPage extends AbstractPage {
         }
     }
 
-    private boolean isClickable(WebElement element){
+    private boolean isClickable(WebElement element) {
         return element.getAttribute("href") != null;
     }
 }

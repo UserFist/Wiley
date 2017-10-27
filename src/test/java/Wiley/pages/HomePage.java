@@ -8,6 +8,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import java.util.List;
 
 import static Wiley.driver.Browser.waitDriver;
@@ -45,51 +46,51 @@ public class HomePage extends AbstractPage {
         return new StudentPage();
     }
 
-    public void clickInstitutions(){
+    public void clickInstitutions() {
         Browser.waitDriver().until(ExpectedConditions.visibilityOf(linkInstitutions));
         linkInstitutions.click();
     }
 
 
-        public void checkNavigationMenu(List<String> constListNavigationMenu) {
-            for (int i = 0; i < headerListActual.size(); i++) {
-                Assert.assertEquals(headerListActual.get(i).getText(), constListNavigationMenu.get(i));
-            }
+    public void checkNavigationMenu(List<String> constListNavigationMenu) {
+        for (int i = 0; i < headerListActual.size(); i++) {
+            Assert.assertEquals(headerListActual.get(i).getText(), constListNavigationMenu.get(i));
         }
+    }
 
-        public void checkResourcesItemsTitle(List<String> expectedResourcesSubHeader) {
-            for (int b = 0; b < subHeaderActual.size(); b++) {
-                Assert.assertEquals(subHeaderActual.get(b).getText(), expectedResourcesSubHeader.get(b));
-                Assert.assertEquals(subHeaderActual.size(), expectedResourcesSubHeader.size());
-            }
+    public void checkResourcesItemsTitle(List<String> expectedResourcesSubHeader) {
+        for (int b = 0; b < subHeaderActual.size(); b++) {
+            Assert.assertEquals(subHeaderActual.get(b).getText(), expectedResourcesSubHeader.get(b));
+            Assert.assertEquals(subHeaderActual.size(), expectedResourcesSubHeader.size());
         }
+    }
 
-        public void checkEmailAddressFieldByEmail(String email, String alertExpected) {
-            waitDriver().until(ExpectedConditions.visibilityOf(emailAdressField));
-            emailAdressField.clear();
-            emailAdressField.sendKeys(email);
-            emailFieldSubmit.click();
-            Alert alert = Browser.init().switchTo().alert();
-            String alertText = alert.getText();
-            Assert.assertEquals(alertText, alertExpected);
-            alert.accept();
-
-        }
-
-        public SearchResultPage checkSearchField(String keyForSearch) {
-            searchField.clear();
-            if(!keyForSearch.isEmpty()){
-                searchField.sendKeys(keyForSearch);
-            }
-            searchFieldSubmit.click();
-            return new SearchResultPage();
-        }
-
-        public void switchOnTab(){
-            Browser.init().findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL +"tab");
-        }
+    public void checkEmailAddressFieldByEmail(String email, String alertExpected) {
+        waitDriver().until(ExpectedConditions.visibilityOf(emailAdressField));
+        emailAdressField.clear();
+        emailAdressField.sendKeys(email);
+        emailFieldSubmit.click();
+        Alert alert = Browser.init().switchTo().alert();
+        String alertText = alert.getText();
+        Assert.assertEquals(alertText, alertExpected);
+        alert.accept();
 
     }
+
+    public SearchResultPage checkSearchField(String keyForSearch) {
+        searchField.clear();
+        if (!keyForSearch.isEmpty()) {
+            searchField.sendKeys(keyForSearch);
+        }
+        searchFieldSubmit.click();
+        return new SearchResultPage();
+    }
+
+    public void switchOnTab() {
+        Browser.init().findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "tab");
+    }
+
+}
 
 
 

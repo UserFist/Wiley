@@ -10,7 +10,7 @@ public class InstitutionsPage extends AbstractPage {
         WebDriver driver = Browser.init();
         driver.switchTo().window(driver.getWindowHandle()).close();
 
-        for(String winHandle : driver.getWindowHandles()){
+        for (String winHandle : driver.getWindowHandles()) {
             driver.switchTo().window(winHandle);
         }
         driver.switchTo().defaultContent();
