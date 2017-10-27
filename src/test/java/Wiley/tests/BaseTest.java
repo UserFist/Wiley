@@ -13,11 +13,9 @@ public abstract class BaseTest {
     public abstract void test();
 
     @AfterMethod
-    public void teardown() {
-        driver.quit();
-    }
+    public void teardown(){driver.quit();}
 
-    public void navigateTo(String url) {
+    public void navigateTo(String url){
         driver.navigate().to(url);
     }
 }

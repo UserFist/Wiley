@@ -20,8 +20,9 @@ public class SearchResultPage extends AbstractPage {
     @FindBy(css = "#search-results")
     public WebElement searchResult;
 
-    public void checkSearchResultListIsNotEmpty() {
+    public SearchResultPage checkSearchResultListIsNotEmpty() {
         Assert.assertTrue(searchResultList.size() > 0);
+        return this;
     }
 
     public ProductDetailsPage clickAndSetBookTitle() {

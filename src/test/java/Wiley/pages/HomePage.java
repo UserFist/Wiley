@@ -46,26 +46,29 @@ public class HomePage extends AbstractPage {
         return new StudentPage();
     }
 
-    public void clickInstitutions() {
+    public HomePage clickInstitutions() {
         Browser.waitDriver().until(ExpectedConditions.visibilityOf(linkInstitutions));
         linkInstitutions.click();
+        return this;
     }
 
 
-    public void checkNavigationMenu(List<String> constListNavigationMenu) {
+    public HomePage checkNavigationMenu(List<String> constListNavigationMenu) {
         for (int i = 0; i < headerListActual.size(); i++) {
             Assert.assertEquals(headerListActual.get(i).getText(), constListNavigationMenu.get(i));
         }
+        return this;
     }
 
-    public void checkResourcesItemsTitle(List<String> expectedResourcesSubHeader) {
+    public HomePage checkResourcesItemsTitle(List<String> expectedResourcesSubHeader) {
         for (int b = 0; b < subHeaderActual.size(); b++) {
             Assert.assertEquals(subHeaderActual.get(b).getText(), expectedResourcesSubHeader.get(b));
             Assert.assertEquals(subHeaderActual.size(), expectedResourcesSubHeader.size());
         }
+        return this;
     }
 
-    public void checkEmailAddressFieldByEmail(String email, String alertExpected) {
+    public HomePage checkEmailAddressFieldByEmail(String email, String alertExpected) {
         waitDriver().until(ExpectedConditions.visibilityOf(emailAdressField));
         emailAdressField.clear();
         emailAdressField.sendKeys(email);
@@ -74,6 +77,7 @@ public class HomePage extends AbstractPage {
         String alertText = alert.getText();
         Assert.assertEquals(alertText, alertExpected);
         alert.accept();
+        return this;
 
     }
 
@@ -86,8 +90,9 @@ public class HomePage extends AbstractPage {
         return new SearchResultPage();
     }
 
-    public void switchOnTab() {
+    public InstitutionsPage switchOnInstitutionTab() {
         Browser.init().findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "tab");
+        return new InstitutionsPage();
     }
 
 }

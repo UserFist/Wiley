@@ -33,7 +33,6 @@ public class StudentPage extends AbstractPage {
         return new HomePage();
     }
 
-
     public class StudentPageCheck {
         public StudentPageCheck checkStudentHeader(String studentsHeader) {
             Assert.assertEquals(studentsHeaderActual.getText(), studentsHeader);
