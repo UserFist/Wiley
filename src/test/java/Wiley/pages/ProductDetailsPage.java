@@ -14,18 +14,12 @@ public class ProductDetailsPage extends AbstractPage {
 
     @FindBy(css = ".productDetail-title")
     private WebElement headerTile;
-    //step 11
+
     public HomePage clickHome() {
         linkHome.click();
         return new HomePage();
     }
 
-    public ProductDetailsPageCheck checker() {
-        return this.new ProductDetailsPageCheck();
-    }
-
-    public class ProductDetailsPageCheck {
-        //step 10
         public ProductDetailsPage checkHeaderEqualToTheTitle() {
             String headerInSearchResult = System.getProperty(KEY);
             Browser.waitDriver().until(ExpectedConditions.visibilityOf(headerTile));
@@ -35,4 +29,4 @@ public class ProductDetailsPage extends AbstractPage {
 
 
     }
-}
+

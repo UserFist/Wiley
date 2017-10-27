@@ -39,36 +39,31 @@ public class HomePage extends AbstractPage {
 
     @FindBy(css = ".resource-institutions>a")
     private WebElement linkInstitutions;
-    //direct to StudentPage, step 3
+
     public StudentPage clickStudentLink() {
         linkStudentsActual.click();
         return new StudentPage();
     }
-    //direct to InstitutionsPage, step 11
+
     public void clickInstitutions(){
         Browser.waitDriver().until(ExpectedConditions.visibilityOf(linkInstitutions));
         linkInstitutions.click();
     }
 
-    public HomePageCheck checker() {
-        return this.new HomePageCheck();
-    }
 
-    public class HomePageCheck {
-        //step1
         public void checkNavigationMenu(List<String> constListNavigationMenu) {
             for (int i = 0; i < headerListActual.size(); i++) {
                 Assert.assertEquals(headerListActual.get(i).getText(), constListNavigationMenu.get(i));
             }
         }
-        //step 2
+
         public void checkResourcesItemsTitle(List<String> expectedResourcesSubHeader) {
             for (int b = 0; b < subHeaderActual.size(); b++) {
                 Assert.assertEquals(subHeaderActual.get(b).getText(), expectedResourcesSubHeader.get(b));
                 Assert.assertEquals(subHeaderActual.size(), expectedResourcesSubHeader.size());
             }
         }
-        //step 7, 8
+
         public void checkEmailAddressFieldByEmail(String email, String alertExpected) {
             waitDriver().until(ExpectedConditions.visibilityOf(emailAdressField));
             emailAdressField.clear();
@@ -80,7 +75,7 @@ public class HomePage extends AbstractPage {
             alert.accept();
 
         }
-        //step 9
+
         public SearchResultPage checkSearchField(String keyForSearch) {
             searchField.clear();
             if(!keyForSearch.isEmpty()){
@@ -96,7 +91,7 @@ public class HomePage extends AbstractPage {
 
     }
 
- }
+
 
 
 

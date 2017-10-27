@@ -26,7 +26,7 @@ public class StudentPage extends AbstractPage {
     public StudentPageCheck checker() {
         return this.new StudentPageCheck();
     }
-    //direst to HomePage
+
     public HomePage clickHome(){
         buttonHome.click();
         return new HomePage();
@@ -34,12 +34,11 @@ public class StudentPage extends AbstractPage {
 
 
     public class StudentPageCheck {
-        //step 3
         public StudentPageCheck checkStudentHeader(String studentsHeader) {
             Assert.assertEquals(studentsHeaderActual.getText(), studentsHeader);
             return this;
         }
-        //step 4
+
         public StudentPageCheck checkMenuOnTheLeft(List<String> expectedListMenuOnTheLeft) {
             for (int c = 0; c < menuOnTheLeftActual.size(); c++) {
                 Assert.assertEquals(expectedListMenuOnTheLeft.get(c), menuOnTheLeftActual.get(c).getText());
@@ -47,7 +46,7 @@ public class StudentPage extends AbstractPage {
             Assert.assertEquals(menuOnTheLeftActual.size(), expectedListMenuOnTheLeft.size());
             return this;
         }
-        //step 5
+
         public StudentPage studentsItemStyleAndClickable(){
             Assert.assertTrue(selectedItemsMenuOnTheLeft.getAttribute("class").contains("active"));
 
@@ -57,7 +56,6 @@ public class StudentPage extends AbstractPage {
             Assert.assertFalse(isClickable(selectedItemsMenuOnTheLeft));
             return new StudentPage();
         }
-        //step 3
         public StudentPageCheck checkStudentsLink(String expectedStudentsLink) {
             try {
                 Thread.sleep(5000);
@@ -71,10 +69,6 @@ public class StudentPage extends AbstractPage {
     }
 
     private boolean isClickable(WebElement element){
-        boolean yes = false;
-        if(element.getAttribute("href") != null){
-            yes = true;
-        }
-        return yes;
+        return element.getAttribute("href") != null;
     }
 }

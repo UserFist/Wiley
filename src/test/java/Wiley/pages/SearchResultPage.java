@@ -18,11 +18,11 @@ public class SearchResultPage extends AbstractPage {
 
     @FindBy(css = "#search-results")
     public WebElement searchResult;
-    //step 9
+
     public void checkSearchResultListIsNotEmpty() {
         Assert.assertTrue(searchResultList.size() > 0);
     }
-    //step 10
+
     public ProductDetailsPage clickAndSetBookTitle() {
         Browser.waitDriver().until(ExpectedConditions.visibilityOf(searchResult));
         WebElement randomBook = searchResultList.get(new Random().nextInt(searchResultList.size()));

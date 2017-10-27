@@ -14,8 +14,10 @@ public class Browser {
     private static DesiredCapabilities capabilities;
 
     static {
-        System.setProperty("webdriver.gecko.driver", "src/resources/geckodriver.exe");
-        capabilities = DesiredCapabilities.firefox();
+//        System.setProperty("webdriver.gecko.driver", "src/resources/geckodriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/resources/chromedriver.exe");
+//        capabilities = DesiredCapabilities.firefox();
+        capabilities = DesiredCapabilities.chrome();
         capabilities.setCapability("marionette", false);
         capabilities.setCapability("acceptInsecureCerts", true);
     }

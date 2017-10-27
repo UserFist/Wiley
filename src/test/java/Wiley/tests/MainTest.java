@@ -28,35 +28,23 @@ public class MainTest extends BaseTest {
         HomePage homePage = new HomePage();
         InstitutionsPage institutions = new InstitutionsPage();
         SearchResultPage searchResultPage =new SearchResultPage();
-        //Step 1
-        homePage.checker().checkNavigationMenu(NAVIGATION_MENU_EXPECTED);
-        //Step 2
-        homePage.checker().checkResourcesItemsTitle(MENU_ITEMS_EXPECTED);
-        //Step 3
+        homePage.checkNavigationMenu(NAVIGATION_MENU_EXPECTED);
+        homePage.checkResourcesItemsTitle(MENU_ITEMS_EXPECTED);
         homePage.clickStudentLink()
                 .checker().checkStudentsLink(STUDENTS_LINK_EXPECTED)
                 .checkStudentHeader(STUDENT_HEADER_EXPECTED)
-                //Step 4
                 .checkMenuOnTheLeft(MENU_ON_THE_LEFT_EXPECTED)
-                //Step 5
                 .studentsItemStyleAndClickable()
-                //step 6
                 .clickHome()
-                //step 7
-                .checker().checkEmailAddressFieldByEmail(EMPTY_STRING, ALERT_TEXT_IF_ENTRY_NOTHING_EXPECTED);
-        //step 8
-        homePage.checker().checkEmailAddressFieldByEmail(INVALID_EMAIL, ALERT_TEXT_IF_ENTRY_INCORRECTLY);
-        //step 9
-        homePage.checker().checkSearchField(KEY_FOR_SEARCH)
+                .checkEmailAddressFieldByEmail(EMPTY_STRING, ALERT_TEXT_IF_ENTRY_NOTHING_EXPECTED);
+        homePage.checkEmailAddressFieldByEmail(INVALID_EMAIL, ALERT_TEXT_IF_ENTRY_INCORRECTLY);
+        homePage.checkSearchField(KEY_FOR_SEARCH)
                 .checkSearchResultListIsNotEmpty();
-                //step 10
         searchResultPage.clickAndSetBookTitle()
-                .checker().checkHeaderEqualToTheTitle()
-                //step 11
+                .checkHeaderEqualToTheTitle()
                 .clickHome()
                 .clickInstitutions();
-        homePage.checker().switchOnTab();
-        //step 12
+        homePage.switchOnTab();
         institutions.checkLinkOnTab(URL_INSTITUTION_EXPECTED);
     }
 
